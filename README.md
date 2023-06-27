@@ -8,6 +8,10 @@ Note that it may not be safe to train / test across different versions of the da
 
 # Updates
 
+26th of June 2023: added **move_tars.sh** which will move a range of downloaded tar archives to the folder where they will form part of a dataset, such as kinetics400/train.  
+
+24th of June 2023: added **extract_and_resize.sh**, which will extract the downloaded tar archives one at a time, resize all of the videos in them so that the shorter side is of 320 pixels (this is for use with the MVD model) and delete the non-resized videos to save space, leaving the tar archives. The user can specify a range of numbered tar files to extract. 
+
 5th of May: fixed k400/train/part_120.tar.gz, it was a tar file before
 
 10th of December: add two downloader scripts for datasets automatic setup. (**k400_downloader.sh** and **k700_2020_downloader.sh**)
@@ -37,10 +41,30 @@ This will create two directories, k400 and k400_targz. Tar gzips will be in k400
 bash ./k400_downloader.sh
 ```
 
+##### Move tar archives
+
+If the tars had been downloaded to the kinetics-dataset (this) folder, they should be moved to a different directory where they will be extracted to form an organized dataset.
+
+```
+./move_tars.sh <start> <end>
+```
+
 ##### Extract tar gzip files
+
+Default method:
+
 ```
 bash ./k400_extractor.sh
 ```
+
+However, to extract and then resize a range of files, use
+
+```
+./extract_and_resize.sh <path_to_split> <start> <end>
+```
+
+Which will extract part_<start>.tar.gz, part_<start + 1>.tar.gz, ..., part_<end>.tar.gz one at a time, resize the videos inside and place them in new folders named like part_X_resized.  
+
 
 #### Kinetics-400 Info:
 The train/val/test splits are subdivided into many files. The lists of links to video files can be found here:
