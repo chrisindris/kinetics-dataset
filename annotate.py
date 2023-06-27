@@ -1,0 +1,1 @@
+import pandas as pdval_csv = pd.read_csv('/Users/chrisindris/Documents/MSc/Projects/i-5O/kinetics-dataset/annotations/val.csv')# Should look like# dataset_root/video_1.mp4  label_1# dataset_root/video_2.mp4  label_2# dataset_root/video_3.mp4  label_3# ...# dataset_root/video_N.mp4  label_N
