@@ -15,9 +15,9 @@ split=$([[ $1 =~ (train|val|test) ]] && echo ${BASH_REMATCH[1]})
 	then 
     		echo "./${one##*/}"
 		echo "$split"
-    		mv "./${one##*/}" "/data/i5O/kinetics400/${split}3/"
+    		mv "./${one##*/}" "/data/i5O/kinetics400/${split}/"
 	fi
-
+	
 	part=$(( $part + 1))
 
 done < $1
