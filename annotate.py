@@ -58,6 +58,9 @@ def main(args):
 
     df = df[["youtube_id", "label"]]
 
+    # some videos seem to be missing, so we remove.
+    df = df[df.apply(lambda x: os.path.isfile(x.youtube_id), axis=1)]
+
     # TODO: populate df with the video clips.
     # For example, --07WQ2iBlw (the full video) is what is listed in val.csv, but we want the address of the 10-sec clip,
     # for example from 1 to 11 seconds --07WQ2iBlw_000001_000011.mp4, and the rest of clips from --07WQ2iBlw, for this we will need to check the dataset folder.
